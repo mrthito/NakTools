@@ -2,15 +2,22 @@
 
 namespace App\Models\Common;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Staff extends Authenticatable
+class Staff extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'staffs';
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +29,8 @@ class Staff extends Authenticatable
         'email',
         'phone',
         'password',
+        'phone',
+        'phone_verified_at'
     ];
 
     /**

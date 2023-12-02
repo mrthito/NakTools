@@ -2,13 +2,13 @@
 
 namespace App\Models\Common;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Superadmin extends Authenticatable
+class Superadmin extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +22,8 @@ class Superadmin extends Authenticatable
         'email',
         'phone',
         'password',
+        'phone',
+        'phone_verified_at'
     ];
 
     /**

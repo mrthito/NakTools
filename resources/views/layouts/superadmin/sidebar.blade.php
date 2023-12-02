@@ -17,13 +17,13 @@
                 Dashboard
             </a>
         </li>
-        <li class="nav-title">Theme</li>
+        <li class="nav-title">{{ __('Users') }}</li>
         <li class="nav-item">
-            <a class="nav-link" href="colors.html">
+            <a class="nav-link" href="{{ route('superadmin.staffs.index') }}">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-drop') }}"></use>
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                 </svg>
-                Colors
+                {{ __('Staffs') }}
             </a>
         </li>
         <li class="nav-item">

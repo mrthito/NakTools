@@ -26,4 +26,8 @@ class UserKyc extends Model
         'phone_number',
         'registration_type',
     ];
+
+    function user() {
+        return $this->belongsTo(User::class);
+    }
 }
