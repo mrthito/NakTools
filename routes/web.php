@@ -15,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return inertia('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => \Illuminate\Foundation\Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->middleware([
+    \App\Http\Middleware\HandleInertiaRequests::class,
+])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
