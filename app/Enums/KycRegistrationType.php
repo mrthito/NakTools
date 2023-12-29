@@ -12,6 +12,20 @@ use BenSampo\Enum\Enum;
 final class KycRegistrationType extends Enum
 {
     const Individual = 0;
-    const SolePropriter = 1;
+    const SoleProprietor = 1;
     const Company = 2;
+
+    public static function getDescription($value): string
+    {
+        if ($value === self::Individual) {
+            return 'Individual';
+        }
+        if ($value === self::SoleProprietor) {
+            return 'Sole Proprietor';
+        }
+        if ($value === self::Company) {
+            return 'Company';
+        }
+        return parent::getDescription($value);
+    }
 }

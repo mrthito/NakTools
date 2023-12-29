@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("UpdateRequest your account's profile information and email address.") }}
         </p>
     </header>
 

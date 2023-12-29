@@ -19,7 +19,7 @@ class MakeStaffUser extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new staff user';
+    protected $description = 'CreateRequest a new staff user';
 
     /**
      * Execute the console command.

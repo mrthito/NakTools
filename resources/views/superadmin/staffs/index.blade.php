@@ -47,8 +47,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('superadmin.dashboard', $staff->id) }}"
-                                        class="btn btn-sm btn-link text-success">Login</a>
+                                    <form action="{{ route('superadmin.staffs.impersonate', $staff->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-link text-success">Login</button>
+                                    </form>
                                 </td>
                                 <td>
                                     <a href="{{ route('superadmin.staffs.edit', $staff->id) }}"

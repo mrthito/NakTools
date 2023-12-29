@@ -24,5 +24,18 @@ class KycDocsCountry extends Model
         'number_of_pages'
     ];
 
-    
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function kycDocs()
+    {
+        return $this->belongsTo(UserKycDoc::class);
+    }
 }

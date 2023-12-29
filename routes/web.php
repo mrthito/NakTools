@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['inertia'])->group(function () {
+    Route::name('u.')->prefix('dashboard')->group(function () {
+        Route::get('/', DashboardController::class)->name('dashboard.index');
+    });
+});
+
 Route::get('/', function () {
     return inertia('Welcome', [
         'canLogin' => Route::has('login'),
@@ -23,11 +30,15 @@ Route::get('/', function () {
     ]);
 })->middleware([
     \App\Http\Middleware\HandleInertiaRequests::class,
-])->name('welcome');
+])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/1', function () {
+    return inertia('Dashboard');
+})->middleware([
+    \App\Http\Middleware\HandleInertiaRequests::class,
+    'auth',
+    'verified'
+])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

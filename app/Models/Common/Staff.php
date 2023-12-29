@@ -68,4 +68,14 @@ class Staff extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new \App\Notifications\Auth\Staff\SendPasswordResetNotification($token));
     }
+
+    public function staffRole()
+    {
+        return $this->hasOne(StaffRole::class);
+    }
+
+    public function staffPermissions()
+    {
+        return $this->hasMany(StaffPermission::class);
+    }
 }

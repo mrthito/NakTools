@@ -14,6 +14,8 @@
     <link href="{{ asset('assets/css/examples.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/@coreui/icons/css/free.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -38,7 +40,77 @@
     <script src="{{ asset('assets/vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
     <script src="{{ asset('assets/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script></script>
+    <script>
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            @endif
+            @if(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            @endif
+
+            @if($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '{{ $errors->first() }}',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            @endif
+
+            // convert above jquery code to vanilla javascript
+            document.querySelectorAll('.btn-delete').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to delete this item?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'No, cancel!',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            element.closest('form').submit();
+                        }
+                    });
+                });
+            });
+
+            document.querySelectorAll('.btn-restore').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to restore this item?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, restore it!',
+                        cancelButtonText: 'No, cancel!',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            element.closest('form').submit();
+                        }
+                    });
+                });
+            });
+    </script>
+
+    @yield('scripts')
 
 </body>
 

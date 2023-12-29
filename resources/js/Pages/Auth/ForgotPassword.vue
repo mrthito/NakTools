@@ -23,39 +23,40 @@ const submit = () => {
 
 <template>
     <GuestLayout>
+
         <Head title="Forgot Password" />
 
-        <div class="mb-4 text-sm text-gray-600">
+        <div class="alert alert-primary">
             Forgot your password? No problem. Just let us know your email address and we will email you a password reset
             link that will allow you to choose a new one.
         </div>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="alert alert-info">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
+        <div class="">
+            <div class="main-signup-header">
+                <h2>Forgot Password!</h2>
+                <h6 class="font-weight-semibold mb-4">
+                    Please Enter Your Email
+                </h6>
+                <div class="panel panel-primary">
+                    <form @submit.prevent="submit">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" placeholder="Enter your email" type="text" v-model="form.email">
+                            <div class="text-danger" v-if="form.errors.email">
+                                {{ form.errors.email }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" :disabled="form.processing">
+                            <i class="fas " :class="{'fa-spinner fa-spin': form.processing}"></i>
+                            Email Password Reset Link
+                        </button>
+                    </form>
+                </div>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
-                </PrimaryButton>
-            </div>
-        </form>
+        </div>
     </GuestLayout>
 </template>

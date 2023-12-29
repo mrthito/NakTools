@@ -30,7 +30,7 @@ class SendEmailVerificationNotification extends Notification
     public static $toMailCallback;
 
     /**
-     * Create a new notification instance.
+     * CreateRequest a new notification instance.
      */
     public function __construct()
     {

@@ -27,7 +27,48 @@ class UserKyc extends Model
         'registration_type',
     ];
 
-    function user() {
+    function user()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    function statuses()
+    {
+        return $this->hasMany(UserKycStatus::class);
+    }
+
+    function status()
+    {
+        return $this->hasOne(UserKycStatus::class)->latest();
+    }
+
+    function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    function documents()
+    {
+        return $this->hasMany(UserKycDoc::class);
+    }
+
+    function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
+    }
+
+    function assign()
+    {
+        return $this->hasOne(UserKycAssignment::class)->latest();
     }
 }

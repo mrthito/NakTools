@@ -19,7 +19,7 @@ class MakeSuperAdmin extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new superadmin user';
+    protected $description = 'CreateRequest a new superadmin user';
 
     /**
      * Execute the console command.

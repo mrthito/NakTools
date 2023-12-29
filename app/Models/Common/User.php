@@ -49,4 +49,8 @@ class User extends Authenticatable implements MustVerifyEmail
     function kyc() {
         return $this->hasOne(UserKyc::class);
     }
+
+    function getNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

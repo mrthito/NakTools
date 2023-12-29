@@ -12,7 +12,7 @@ class SendPasswordResetNotification extends Notification
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * CreateRequest a new notification instance.
      */
     public function __construct()
     {

@@ -18,123 +18,284 @@
             </a>
         </li>
         <li class="nav-title">Theme</li>
-        <li class="nav-item">
-            <a class="nav-link" href="colors.html">
-                <svg class="nav-icon">
-                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-drop') }}"></use>
-                </svg>
-                Colors
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="typography.html">
-                <svg class="nav-icon">
-                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
-                </svg>
-                Typography
-            </a>
-        </li>
-        <li class="nav-title">Components</li>
         <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}"></use>
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
                 </svg>
-                Base
+                Customer KYC
             </a>
             <ul class="nav-group-items">
                 <li class="nav-item">
-                    <a class="nav-link" href="base/accordion.html">
-                        <span class="nav-icon"></span>
-                        Accordion
+                    <a class="nav-link" href="{{ route('staff.kyc.kyc-docs.index', ['status' => 'Pending']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-cloud-upload') }}">
+                        </svg>
+                        New Submitted
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/breadcrumb.html">
-                        <span class="nav-icon"></span>
-                        Breadcrumb
+                    <a class="nav-link" href="{{ route('staff.kyc.kyc-docs.index', ['status' => 'Approved']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-check-circle') }}">
+                            </use>
+                        </svg>
+                        Approved
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/cards.html">
-                        <span class="nav-icon"></span>
-                        Cards
+                    <a class="nav-link" href="{{ route('staff.kyc.kyc-docs.index', ['status' => 'Rejected']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-x-circle') }}">
+                            </use>
+                        </svg>
+                        Rejected
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/carousel.html">
-                        <span class="nav-icon"></span>
-                        Carousel
+                    <a class="nav-link" href="{{ route('staff.kyc.kyc-docs.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-view-stream') }}">
+                            </use>
+                        </svg>
+                        All KYC List
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="base/collapse.html">
-                        <span class="nav-icon"></span>
-                        Collapse
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/list-group.html">
-                        <span class="nav-icon"></span>
-                        List group
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/navs-tabs.html">
-                        <span class="nav-icon"></span>
-                        Navs &amp; Tabs
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/pagination.html">
-                        <span class="nav-icon"></span>
-                        Pagination
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/placeholders.html">
-                        <span class="nav-icon"></span>
-                        Placeholders
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/popovers.html">
-                        <span class="nav-icon"></span>
-                        Popovers
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/progress.html">
-                        <span class="nav-icon"></span>
-                        Progress
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/scrollspy.html">
-                        <span class="nav-icon"></span>
-                        Scrollspy
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/spinners.html">
-                        <span class="nav-icon"></span>
-                        Spinners
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/tables.html">
-                        <span class="nav-icon"></span>
-                        Tables
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/tooltips.html">
-                        <span class="nav-icon"></span>
-                        Tooltips
+                    <a class="nav-link" href="{{ route('staff.kyc.check-docs') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-zoom') }}"></use>
+                        </svg>
+                        Check Required Docs
                     </a>
                 </li>
             </ul>
         </li>
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-truck') }}"></use>
+                </svg>
+                Shipments
+            </a>
+            <ul class="nav-group-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.shipments.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use
+                                xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-flight-takeoff') }}">
+                        </svg>
+                        New Manifested
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.shipments.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-warning') }}">
+                            </use>
+                        </svg>
+                        Abandoned
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.shipments.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-list') }}">
+                            </use>
+                        </svg>
+                        All Shipments List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.shipments.track') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-zoom') }}"></use>
+                            </use>
+                        </svg>
+                        Track Shipment
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-dollar') }}"></use>
+                </svg>
+                Recharge &amp; Payments
+            </a>
+            <ul class="nav-group-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.recharges.new') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-star') }}">
+                        </svg>
+                        New Recharge
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.recharges.manual') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-cash') }}">
+                            </use>
+                        </svg>
+                        Manual Recharge
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.recharges.po') }}">
+                        <svg class="nav-icon">
+                            <use
+                                xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-playlist-add') }}">
+                            </use>
+                        </svg>
+                        PO Request List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.recharges.histories') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-list') }}"></use>
+                            </use>
+                        </svg>
+                        Transactions History
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-tags') }}"></use>
+                </svg>
+                Escalations &amp; Disputes
+            </a>
+            <ul class="nav-group-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.escalations.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-bullhorn') }}">
+                        </svg>
+                        New Tickets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.escalations.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use
+                                xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}">
+                            </use>
+                        </svg>
+                        Open Tickets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.escalations.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-sad') }}">
+                            </use>
+                        </svg>
+                        Dispute Tickets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.escalations.index', ['status' => '']) }}">
+                        <svg class="nav-icon">
+                            <use
+                                xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-mood-very-good') }}">
+                            </use>
+                            </use>
+                        </svg>
+                        Escalated Tickets
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-cog') }}"></use>
+                </svg>
+                Settings
+            </a>
+            <ul class="nav-group-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.departments.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-contact') }}">
+                        </svg>
+                        Departments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.categories.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}">
+                        </svg>
+                        Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.role-assignments.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-people') }}">
+                        </svg>
+                        Role Assignment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.feedbacks.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-pen-alt') }}">
+                        </svg>
+                        Staff Feedback
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('staff.kyc.noticeboards.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-bullhorn') }}">
+                        </svg>
+                        Staff Noticeboard
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('staff.kyc.users.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-people') }}"></use>
+                </svg>
+                Users
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('staff.kyc.reports.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-graph') }}"></use>
+                </svg>
+                User Reports
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('staff.kyc.timelines.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-monitor') }}"></use>
+                </svg>
+                My Timeline
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('staff.kyc.developers.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-code') }}"></use>
+                </svg>
+                Developer Notifications
+            </a>
+        </li>
+        <li class="nav-title">Components</li>
+
         <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">
                 <svg class="nav-icon">

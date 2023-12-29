@@ -17,6 +17,13 @@ class DatabaseSeeder extends Seeder
             SuperadminSeeder::class,
             StaffSeeder::class,
             KycDocsCountrySeeder::class,
+            PlanSeeder::class,
+            PlanFeatureSeeder::class,
+            TransactionLogSeeder::class,
+            CourierSeeder::class,
+            RoleSeeder::class,
+            PermissionSeeder::class,
+            UserPermissionSeeder::class,
         ]);
     }
 }

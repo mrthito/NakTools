@@ -20,4 +20,24 @@ final class KycDocsStatus extends Enum
     const Rejected = 2;
     const Expired = 3;
     const ReUploadRequired = 4;
+
+    public static function getDescription($value): string
+    {
+        if ($value === self::Pending) {
+            return 'Pending';
+        }
+        if ($value === self::Approved) {
+            return 'Approved';
+        }
+        if ($value === self::Rejected) {
+            return 'Rejected';
+        }
+        if ($value === self::Expired) {
+            return 'Expired';
+        }
+        if ($value === self::ReUploadRequired) {
+            return 'Re-Upload Required';
+        }
+        return parent::getDescription($value);
+    }
 }

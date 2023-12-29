@@ -27,11 +27,69 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="typography.html">
+            <a class="nav-link" href="{{ route('superadmin.plans.index') }}">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-dollar') }}"></use>
                 </svg>
-                Typography
+                {{ __('Plans') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.couriers.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-truck') }}"></use>
+                </svg>
+                {{ __('Couriers') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.coupons.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-tag') }}"></use>
+                </svg>
+                {{ __('Coupons') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.analytics.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-chart-pie') }}">
+                </svg>
+                {{ __('Analytics') }}
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.marketing.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-bullhorn') }}"></use>
+                </svg>
+                {{ __('Marketing') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.import-export.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-cloud-download') }}">
+                    </use>
+                </svg>
+                {{ __('Import Export') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.roles.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}"></use>
+                </svg>
+                {{ __('Roles & Permissions') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('superadmin.kyc-docs.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('assets/vendors/@coreui/icons/svg/free.svg#cil-file') }}"></use>
+                </svg>
+                KYC Docs
             </a>
         </li>
         <li class="nav-title">Components</li>
