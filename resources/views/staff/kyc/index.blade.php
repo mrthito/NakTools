@@ -48,7 +48,7 @@
                                         <span class="btn btn-sm btn-outline-danger">Rejected</span>
                                     @endif
                                 <td>
-                                    <a href="{{ route('staff.kyc.kyc-docs.show', encrypt($kyc->id)) }}"
+                                    <a href="{{ route('staff.kyc.kyc-docs.edit', encrypt($kyc->id)) }}"
                                         class="btn btn-sm btn-primary text-white">Detail</a>
                                 </td>
                             </tr>

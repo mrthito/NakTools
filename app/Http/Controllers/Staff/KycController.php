@@ -58,7 +58,7 @@ class KycController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('staff.kyc.show');
     }
 
     /**
@@ -66,7 +66,21 @@ class KycController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $id = decrypt($id);
+        $userKyc = UserKyc::with([
+            'user',
+            'status',
+            'assign' => function ($query) {
+                $query->where('staff_id', auth()->id());
+            }
+        ])
+            ->where('id', $id)
+            ->whereHas('assign', function ($query) {
+                $query->where('staff_id', auth()->id());
+            })
+            ->firstOrFail();
+
+        return view('staff.kyc.edit', compact('userKyc'));
     }
 
     /**

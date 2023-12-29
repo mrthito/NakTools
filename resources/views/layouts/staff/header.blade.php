@@ -1,4 +1,9 @@
-<header class="header header-sticky @if (!(Auth::guard('superadmin')->check() && Auth::guard('staff')->check() && session()->has('impersonate') && session()->get('impersonate') == Auth::guard('staff')->user()->id)) mb-4 @endif">
+<header class="header header-sticky @if (
+    !(Auth::guard('superadmin')->check() &&
+        Auth::guard('staff')->check() &&
+        session()->has('impersonate') &&
+        session()->get('impersonate') == Auth::guard('staff')->user()->id
+    )) mb-4 @endif">
     <div class="container-fluid">
         <button class="header-toggler px-md-0 me-md-3" type="button"
             onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
@@ -150,23 +155,29 @@
                 <li class="breadcrumb-item">
                     <!-- if breadcrumb is single--><span>Home</span>
                 </li>
-                <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                @isset($breadcrumb)
+                    {{ $breadcrumb }}
+                @endisset
             </ol>
         </nav>
     </div>
 </header>
-@if (Auth::guard('superadmin')->check() && Auth::guard('staff')->check() && session()->has('impersonate') && session()->get('impersonate') == Auth::guard('staff')->user()->id)
-<div class="impersonate mb-4 small">
-    <div class="impersonate-bar"></div>
-    <label class="impersonate-info">
+@if (Auth::guard('superadmin')->check() &&
+        Auth::guard('staff')->check() &&
+        session()->has('impersonate') &&
+        session()->get('impersonate') == Auth::guard('staff')->user()->id)
+    <div class="impersonate mb-4 small">
+        <div class="impersonate-bar"></div>
+        <label class="impersonate-info">
             <span class="impersonate-info-text small">
                 Currently impersonating...
                 <form action="{{ route('superadmin.staffs.impersonate.destroy') }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-outline-danger text-white ms-3" style="padding: 0px 5px; border: 1px solid powderblue;">Stop Impersonating</button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger text-white ms-3"
+                        style="padding: 0px 5px; border: 1px solid powderblue;">Stop Impersonating</button>
                 </form>
             </span>
-    </label>
-</div>
+        </label>
+    </div>
 @endif
