@@ -27,6 +27,11 @@ class UserKyc extends Model
         'registration_type',
     ];
 
+    public function scopeMy($query)
+    {
+        return $query->where('user_id', auth()->id());
+    }
+
     function user()
     {
         return $this->belongsTo(User::class);

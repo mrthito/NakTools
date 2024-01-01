@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->unique();
             $table->timestamp('phone_verified_at')->nullable();
+            $table->boolean('two_factor_enabled')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

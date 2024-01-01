@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\KycController;
+use App\Models\Common\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,33 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['inertia'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::name('u.')->prefix('dashboard')->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard.index');
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+        Route::resource('kyc', KycController::class);
     });
 });
 
 Route::get('/', function () {
-    return inertia('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => \Illuminate\Foundation\Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->middleware([
-    \App\Http\Middleware\HandleInertiaRequests::class,
-])->name('home');
-
-Route::get('/dashboard/1', function () {
-    return inertia('Dashboard');
-})->middleware([
-    \App\Http\Middleware\HandleInertiaRequests::class,
-    'auth',
-    'verified'
-])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    // if (Auth::check()) {
+    //     Auth::logout();
+    // }
+    // User::where('email', 'admin@log.in')->update([
+    //     'password' => bcrypt('12345678')
+    // ]);
+})->name('home');

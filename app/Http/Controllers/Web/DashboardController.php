@@ -12,8 +12,6 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return inertia('Dashboard/Index', [
-            'user' => $request->user()->only('id', 'name', 'email'),
-        ]);
+        return view('dashboard');
     }
 }

@@ -3,24 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Common\Country;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request)
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+        $preCountry = [];
+        $countries = [];
+        $allCountries = Country::orderBy('phone_code')
+            ->get(['id', 'phone_code']);
+        if ($allCountries->count() > 0) {
+            foreach ($allCountries as $country) {
+                if (!in_array($country->phone_code, $preCountry)) {
+                    $preCountry[] = $country->phone_code;
+                    $countries[] = $country;
+                }
+            }
+        }
+        $user = $request->user();
+        $phone = explode('-', $user->phone);
+        $user->phone_code = $phone[0] ?? '';
+        $user->phone = $phone[1] ?? $user->phone;
+        return view('profile.edit', [
+            'user' => $user,
+            'countries' => $countries,
         ]);
     }
 
@@ -29,15 +44,19 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->phone = $request->country_code . '-' . $request->phone_number;
+        $user->email = $request->email;
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('u.profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -46,7 +65,10 @@ class ProfileController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         $request->validate([
-            'password' => ['required', 'current_password'],
+            'password1' => ['required', 'current_password'],
+        ], [
+            'password1.required' => 'The password field is required.',
+            'password1.current_password' => 'The password is incorrect.',
         ]);
 
         $user = $request->user();
