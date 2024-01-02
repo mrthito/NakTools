@@ -12,6 +12,7 @@ class KycDocsCountry extends Model
     protected $fillable = [
         'country_id',
         'state_id',
+        'registration_type',
         'name',
         'required',
         'has_id_number',

@@ -19,7 +19,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = '/dashboard';
+    public const STAFF = '/staff';
+    public const SUPERADMIN = '/superadmin';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -55,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
                         ->group(base_path('routes/superadmin/auth.php'));
                 });
 
-            Route::middleware('inertia')->group(function () {
+            Route::middleware([])->group(function () {
                 Route::middleware('web')
                     ->group(base_path('routes/web.php'));
                 Route::middleware('web')

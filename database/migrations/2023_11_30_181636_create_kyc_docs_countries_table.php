@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('state_id')->nullable();
+            $table->smallInteger('registration_type')->default(1);
             $table->string('name')->index();
             $table->boolean('required')->default(false);
             $table->boolean('has_id_number')->default(false);

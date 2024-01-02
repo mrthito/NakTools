@@ -35,6 +35,7 @@
                                 <label for="country_id" class="form-label">{{ __('Country') }}</label>
                                 <select class="form-select @error('country_id') is-invalid @enderror" id="country_id"
                                     name="country_id">
+                                    <option value="">{{ __('Select Country') }}</option>
                                     @forelse($countries as $country)
                                         <option value="{{ $country->id }}"
                                             {{ old('country_id', $kycDoc->country_id) == $country->id ? 'selected' : '' }}>
@@ -51,6 +52,7 @@
                                 <label for="state_id" class="form-label">{{ __('State') }}</label>
                                 <select class="form-select @error('state_id') is-invalid @enderror" id="state_id"
                                     name="state_id">
+                                    <option value="">{{ __('Select State') }}</option>
                                     @forelse($states as $state)
                                         <option value="{{ $state->id }}"
                                             {{ old('state_id', $kycDoc->state_id) == $state->id ? 'selected' : '' }}>

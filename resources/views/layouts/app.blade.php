@@ -39,6 +39,12 @@
             font-weight: 600;
         }
     </style>
+
+    @livewireStyles
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet" />
+    @stack('head')
 </head>
 
 <body>
@@ -303,7 +309,7 @@
     <div class="modal modal-blur fade" id="modal-logout" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form action="{{ route('login') }}" method="POST">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <div class="modal-header">
                         <div class="d-flex">
@@ -350,7 +356,7 @@
     <!-- Tabler Core -->
     <script src="/assets/user/js/tabler.min.js" defer></script>
     <script src="/assets/user/js/demo.min.js" defer></script>
-    <script>
+    {{-- <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function() {
             window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
@@ -1165,7 +1171,16 @@
             })).render();
         });
         // @formatter:on
-    </script>
+    </script> --}}
+
+    @livewireScripts
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
+    @stack('scripts')
 </body>
 
 </html>
